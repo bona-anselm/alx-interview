@@ -1,6 +1,9 @@
 #!/usr/bin/python3
+""" Defines canUnlockAll """
+
 
 def canUnlockAll(boxes):
+    """ A method that determines if all the boxes can be opened """
     if not isinstance(boxes, list) or len(boxes) == 0:
         return False
 
