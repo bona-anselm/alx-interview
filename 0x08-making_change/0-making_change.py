@@ -8,23 +8,19 @@ def makeChange(coins, total):
         amount total from a pile of coins of different values in other
         to make change
     """
-    # Initialize an array to store the minimum number of coins needed
-    # for each value from 0 to 'total'.
-    # Initialize the array with a large value to represent infinity.
-    dp = [float('inf')] * (total + 1)
-
-    # The minimum number of coins needed to make change for 0 is 0.
-    dp[0] = 0
-
-    # Iterate through each coin denomination.
-    for coin in coins:
-        # Update the dp array for each possible total value.
-        for i in range(coin, total + 1):
-            dp[i] = min(dp[i], dp[i - coin] + 1)
-
-    # If dp[total] is still infinity, it means it's not possible
-    # to make change for the given total.
-    if dp[total] == float('inf'):
-        return -1
-    else:
-        return dp[total]
+    if total <= 0:
+        return 0
+    rem = total
+    coins_count = 0
+    coin_idx = 0
+    sorted_coins = sorted(coins, reverse=True)
+    n = len(coins)
+    while rem > 0:
+        if coin_idx >= n:
+            return -1
+        if rem - sorted_coins[coin_idx] >= 0:
+            rem -= sorted_coins[coin_idx]
+            coins_count += 1
+        else:
+            coin_idx += 1
+    return coins_count
