@@ -3,7 +3,7 @@
 
 
 def isWinner(x, nums):
-    """ 
+    """
         Defines the function isWinner which determines the winner of a
         prime game session with `x` rounds.
     """
